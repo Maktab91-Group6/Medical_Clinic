@@ -1,4 +1,4 @@
-﻿namespace Clinic_Project.Models
+﻿namespace Clinic_Project.Services.LoginService
 {
     public static class CurrentUser
     {
@@ -13,5 +13,5 @@
         }
     }
 
-    
+
 }
