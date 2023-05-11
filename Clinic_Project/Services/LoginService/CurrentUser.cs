@@ -2,7 +2,8 @@
 {
     public static class CurrentUser
     {
-        public static int CurrentUserId { get; set; }
+        public static int? CurrentUserId { get; set; }
+        public static bool DoctorCheck { get; set; }
         public static void SetCurrentUser(int id)
         {
             CurrentUserId = id;
@@ -11,6 +12,7 @@
         {
             CurrentUserId = default;
         }
+        
     }
 
 
