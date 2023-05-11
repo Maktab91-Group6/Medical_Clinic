@@ -4,19 +4,17 @@ using Clinic_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using MedicalClinicContext = Clinic_Project.DataAccess.DbContext.MedicalClinicContext;
 
 #nullable disable
 
 namespace Clinic_Project.Migrations
 {
     [DbContext(typeof(MedicalClinicContext))]
-    [Migration("20230511072937_init")]
-    partial class init
+    partial class MedicalClinicContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

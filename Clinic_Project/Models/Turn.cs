@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Clinic_Project.Models.DoctorAgg;
 
 namespace Clinic_Project.Models;
 
@@ -20,4 +21,11 @@ public partial class Turn
     public virtual Doctor Doctor { get; set; } = null!;
 
     public virtual Patient? Patient { get; set; }
+
+    public Turn(DateTime starTime,DateTime endTime ,int doctorId)
+    {
+        StartTime = starTime;
+        EndTime = endTime;
+        DoctorId = doctorId;
+    }
 }

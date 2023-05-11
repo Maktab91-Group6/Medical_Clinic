@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Clinic_Project.Models;
 using Clinic_Project.Models.DoctorAgg;
 using Clinic_Project.Models.SkillAgg;
 using Microsoft.EntityFrameworkCore;
 
-namespace Clinic_Project.Models;
+namespace Clinic_Project.DataAccess.DbContext;
 
-public partial class MedicalClinicContext : DbContext
+public partial class MedicalClinicContext : Microsoft.EntityFrameworkCore.DbContext
 {
     public MedicalClinicContext()
     {
     }
 
-    public MedicalClinicContext(DbContextOptions<DataAccess.DbContext.MedicalClinicContext> options)
+    public MedicalClinicContext(DbContextOptions<MedicalClinicContext> options)
         : base(options)
     {
     }

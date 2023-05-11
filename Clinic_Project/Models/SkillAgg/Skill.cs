@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Clinic_Project.Models.DoctorAgg;
 
-namespace Clinic_Project.Models;
+namespace Clinic_Project.Models.SkillAgg;
 
 public partial class Skill
 {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Clinic_Project.Models.SkillAgg;
 
-namespace Clinic_Project.Models.Doctor;
+namespace Clinic_Project.Models.DoctorAgg;
 
 public partial class Doctor
 {
@@ -22,4 +21,6 @@ public partial class Doctor
     public virtual Skill Skill { get; set; } = null!;
 
     public virtual ICollection<Turn> Turns { get; set; } = new List<Turn>();
+
+   
 }
