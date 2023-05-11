@@ -35,8 +35,7 @@ namespace Clinic_Project.Models.DoctorAgg.Service
         public void SetSkill(int id)
         {
             var doctor = _doctorRepo.Get(CurrentUser.CurrentUserId);
-            var skill = _skillRepo.Get(id);
-            doctor.Skill = skill;
+            doctor.SkillId=id;
             _doctorRepo.Save();
         }
     }
