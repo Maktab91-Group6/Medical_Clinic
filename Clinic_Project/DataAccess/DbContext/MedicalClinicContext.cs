@@ -1,5 +1,5 @@
-﻿using Clinic_Project.Models;
-using Clinic_Project.Models.DoctorAgg;
+﻿using Clinic_Project.Models.DoctorAgg;
+using Clinic_Project.Models.patientAgg;
 using Clinic_Project.Models.SkillAgg;
 using Clinic_Project.Models.TurnAgg;
 using Microsoft.EntityFrameworkCore;

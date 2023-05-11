@@ -4,6 +4,7 @@ using Clinic_Project.DataAccess.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clinic_Project.Migrations
 {
     [DbContext(typeof(MedicalClinicContext))]
-    partial class MedicalClinicContextModelSnapshot : ModelSnapshot
+    [Migration("20230511103152_doctor_patient_name")]
+    partial class doctor_patient_name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,6 +89,7 @@ namespace Clinic_Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("DoctorName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndTime")
@@ -98,6 +102,7 @@ namespace Clinic_Project.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PatientName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartTime")

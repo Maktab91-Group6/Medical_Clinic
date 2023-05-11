@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Clinic_Project.Models.TurnAgg;
 
-namespace Clinic_Project.Models;
+namespace Clinic_Project.Models.patientAgg;
 
 public partial class Patient
 {
@@ -19,4 +19,8 @@ public partial class Patient
     public bool Role { get; set; }
 
     public virtual ICollection<Turn> Turns { get; set; } = new List<Turn>();
+    public Patient()
+    {
+
+    }
 }

@@ -1,4 +1,5 @@
-﻿using Clinic_Project.Models;
+﻿using Clinic_Project.DataAccess.DbContext;
+using Clinic_Project.Models;
 using Clinic_Project.Models.TurnAgg;
 
 namespace Clinic_Project.DataAccess.Repositories

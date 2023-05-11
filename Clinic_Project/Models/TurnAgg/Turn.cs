@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using Clinic_Project.Models.DoctorAgg;
+using Clinic_Project.Models.patientAgg;
 
 namespace Clinic_Project.Models.TurnAgg;
 
 public partial class Turn
 {
     public int Id { get; set; }
+    public string? DoctorName { get; set; }
+
+    public string? PatientName { get; set; }
 
     public DateTime StartTime { get; set; }
 
@@ -27,5 +31,9 @@ public partial class Turn
         StartTime = starTime;
         EndTime = endTime;
         DoctorId = doctorId;
+    }
+    public Turn()
+    {
+
     }
 }
