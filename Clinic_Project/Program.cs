@@ -1,3 +1,10 @@
+using Clinic_Project.DataAccess.Repositories;
+using Clinic_Project.Models;
+using Clinic_Project.Models.DoctorAgg;
+using Clinic_Project.Models.SkillAgg;
+using Clinic_Project.Models.TurnAgg;
+using Microsoft.EntityFrameworkCore;
+
 namespace Clinic_Project
 {
     public class Program
@@ -9,13 +16,19 @@ namespace Clinic_Project
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<MedicalClinicContext>(x =>
+                x.UseSqlServer(builder.Configuration.GetConnectionString("Medical-string")));
+            builder.Services.AddTransient<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddTransient<ISkillRepository, SkillRepository>();
+            builder.Services.AddTransient<ITurnRepository, TurnRepository>();
+
+
+
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

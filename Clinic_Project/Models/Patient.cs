@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Clinic_Project.Models.TurnAgg;
 
 namespace Clinic_Project.Models;
 

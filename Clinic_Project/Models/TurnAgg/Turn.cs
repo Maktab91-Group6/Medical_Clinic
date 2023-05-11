@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Clinic_Project.Models.DoctorAgg;
 
-namespace Clinic_Project.Models;
+namespace Clinic_Project.Models.TurnAgg;
 
 public partial class Turn
 {
@@ -22,7 +22,7 @@ public partial class Turn
 
     public virtual Patient? Patient { get; set; }
 
-    public Turn(DateTime starTime,DateTime endTime ,int doctorId)
+    public Turn(DateTime starTime, DateTime endTime, int doctorId)
     {
         StartTime = starTime;
         EndTime = endTime;

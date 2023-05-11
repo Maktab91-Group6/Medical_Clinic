@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Clinic_Project.Models.DoctorAgg;
 using Clinic_Project.Models.SkillAgg;
+using Clinic_Project.Models.TurnAgg;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clinic_Project.Models;

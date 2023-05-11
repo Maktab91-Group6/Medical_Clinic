@@ -1,4 +1,5 @@
 ﻿using Clinic_Project.Models.SkillAgg;
+using Clinic_Project.Models.TurnAgg;
 using Clinic_Project.Services.LoginService;
 
 namespace Clinic_Project.Models.DoctorAgg.Service
@@ -7,11 +8,13 @@ namespace Clinic_Project.Models.DoctorAgg.Service
     {
         private readonly IDoctorRepository _doctorRepo;
         private readonly ISkillRepository _skillRepo;
+        private readonly ITurnRepository _turnRepo;
 
-        public DoctorServices(IDoctorRepository doctorRepo, ISkillRepository skillRepo)
+        public DoctorServices(IDoctorRepository doctorRepo, ISkillRepository skillRepo, ITurnRepository turnRepo)
         {
             _doctorRepo = doctorRepo;
             _skillRepo = skillRepo;
+            _turnRepo = turnRepo;
         }
 
         public void SetTurns(DateTime startJob, DateTime endJob)
@@ -23,10 +26,10 @@ namespace Clinic_Project.Models.DoctorAgg.Service
             var startTurn = startJob;
             for (var i = 0; i < durationTimeTotalMinutes; i++)
             {
-                doctor!.Turns.Add(new Turn(startTurn,startTurn.AddMinutes(30),doctor.Id));
+                _turnRepo.Add(new Turn(startTurn, startTurn.AddMinutes(30), doctor.Id));
                 startTurn = startTurn.AddMinutes(30);
             }
-            _doctorRepo.Save();
+            _turnRepo.Save();
         }
 
         public void SetSkill(int id)

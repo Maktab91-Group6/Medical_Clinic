@@ -1,6 +1,7 @@
 ﻿using Clinic_Project.Models;
 using Clinic_Project.Models.DoctorAgg;
 using Clinic_Project.Models.SkillAgg;
+using Clinic_Project.Models.TurnAgg;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clinic_Project.DataAccess.DbContext;
@@ -23,10 +24,6 @@ public partial class MedicalClinicContext : Microsoft.EntityFrameworkCore.DbCont
     public virtual DbSet<Skill> Skills { get; set; }
 
     public virtual DbSet<Turn> Turns { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer(" Data Source=EM-PC\\EM_SQLSERVER;Initial Catalog=Medical_Clinic;TrustServerCertificate=True;Integrated Security=True; ");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

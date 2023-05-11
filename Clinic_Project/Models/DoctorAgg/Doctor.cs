@@ -1,4 +1,5 @@
 ﻿using Clinic_Project.Models.SkillAgg;
+using Clinic_Project.Models.TurnAgg;
 
 namespace Clinic_Project.Models.DoctorAgg;
 
