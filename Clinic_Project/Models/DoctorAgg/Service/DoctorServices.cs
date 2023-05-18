@@ -19,7 +19,7 @@ namespace Clinic_Project.Models.DoctorAgg.Service
 
         public void SetTurns(DateTime startJob, DateTime endJob)
         {
-            var doctor = _doctorRepo.Get(CurrentUser.CurrentUserId);
+            var doctor = _doctorRepo.Get(CurrentUser.CurrentUserId.Value);
             
             var durationTime=endJob-startJob;
             var durationTimeTotalMinutes = (int)durationTime.TotalMinutes/30;
@@ -34,7 +34,7 @@ namespace Clinic_Project.Models.DoctorAgg.Service
 
         public void SetSkill(int id)
         {
-            var doctor = _doctorRepo.Get(CurrentUser.CurrentUserId);
+            var doctor = _doctorRepo.Get(CurrentUser.CurrentUserId.Value);
             doctor.SkillId=id;
             _doctorRepo.Save();
         }

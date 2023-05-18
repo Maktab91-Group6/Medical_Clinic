@@ -22,7 +22,7 @@ public partial class Turn
 
     public bool IsReserved { get; set; }
 
-    public virtual Doctor Doctor { get; set; } = null!;
+    public virtual Doctor? Doctor { get; set; } = null;
 
     public virtual Patient? Patient { get; set; }
 

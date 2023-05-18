@@ -6,6 +6,9 @@ using Clinic_Project.Models.patientAgg;
 using Clinic_Project.Models.SkillAgg;
 using Clinic_Project.Models.TurnAgg;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Sinks.MSSqlServer;
 
 namespace Clinic_Project
 {
@@ -24,6 +27,44 @@ namespace Clinic_Project
             builder.Services.AddTransient<ISkillRepository, SkillRepository>();
             builder.Services.AddTransient<ITurnRepository, TurnRepository>();
             builder.Services.AddTransient<IPatientRipository, PatientRipository>();
+            builder.Services.AddScoped<TurnRepository>();
+
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
+
+            //var configuration = new ConfigurationBuilder()
+	           // .SetBasePath(Directory.GetCurrentDirectory())
+	           // // reloadOnChange will allow you to auto reload the minimum level and level switches
+	           // .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
+	           // .Build();
+
+            //string logDbConnectionString = _configuration.GetValue<string>("Modules:Logging:logDb");
+
+			Log.Logger = new LoggerConfiguration()
+				//.MinimumLevel.Verbose()
+				.ReadFrom.Configuration(builder.Configuration.GetSection("Logging"))
+				.WriteTo.Logger(x =>
+		            {
+			            //x.Filter.ByIncludingOnly(y => y.Properties.ContainsKey());
+			            x.WriteTo.File(builder.Configuration.GetSection("Logging:Serilog:FilePath").Value);
+			            x.MinimumLevel.Error();
+		            })
+	            .WriteTo.Seq(builder.Configuration.GetSection("Logging:Serilog:ServerUrlSeq").Value)
+				.WriteTo.Logger(x =>
+				{
+					x.WriteTo.MSSqlServer(
+						connectionString: builder.Configuration
+							.GetSection("Logging:Serilog:ConnectionStrings:SqlConnectionString").Value,
+						sinkOptions: new MSSqlServerSinkOptions()
+						{
+							TableName = "Log",
+							AutoCreateSqlTable = true
+						});
+					x.Filter.ByIncludingOnly(y => y.Properties.ContainsKey("SqlCrud"));
+					x.MinimumLevel.Verbose();
+				})
+				.CreateLogger();
+            
 
 
 
